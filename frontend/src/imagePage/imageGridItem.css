@@ -1,0 +1,21 @@
+.image-grid-item {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+}
+
+.heart-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.heart-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

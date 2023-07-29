@@ -1,0 +1,2 @@
+const jwtSecretKey='d96ea504fcf6403d43d2dd10b4b306b995a8f462ef7c88f364ad02bd63595b2fdc2b40f11b52ef48e51cae3f9d3b75628fd7349ba8b665abe844f2b72e7d4da7'
+module.exports=jwtSecretKey;

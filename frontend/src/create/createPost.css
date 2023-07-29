@@ -1,0 +1,54 @@
+/* createPost.css */
+.page-container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  position: relative;
+}
+
+.arrow-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-arrow {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin: 20px 10px;
+  color: black;
+  background-color: grey;
+}
+
+.icon-container {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.text {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: row; 
+    justify-content: center; 
+  }
+
+  .icon-container {
+    margin-right: 5px;
+  }
+}
