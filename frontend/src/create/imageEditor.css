@@ -4,7 +4,10 @@
   /* display: inline; */
   /* padding-top: 50px; */
 }
-
+.ratio-image{
+  height: 35px;
+  width:35px
+}
 .top-section {
   display: flex;
   justify-content: space-between;

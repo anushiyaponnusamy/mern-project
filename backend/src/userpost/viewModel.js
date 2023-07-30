@@ -8,6 +8,7 @@ userViewModel.createViewModel = (req) => {
     viewModel.userName = body.userName;
     // viewModel.profilePhoto = body.profilePhoto;
     viewModel.description = body.description;
+    viewModel.type = body.type;
     viewModel.aspectRatio=body.aspectRatio;
     if (body.tag) {
         viewModel.tag = body.tag;

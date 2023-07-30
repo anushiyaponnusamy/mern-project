@@ -1,0 +1,123 @@
+
+
+.post-container {
+    position: relative;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    
+    min-height: 250px;
+    border-radius: 30px;
+    box-shadow: 0 5px 13px rgba(0, 0, 0, 0.1);
+  }
+.user-row {
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 0px 0px;
+    justify-content: space-between;
+  }
+  
+  .user-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 11px 0px 5px 0px;
+
+  }
+  .userCircleIcon{
+    
+    height: 33px;
+    margin: 5px 0px 5px 5px;
+    color: rgb(170, 170, 170);
+  }
+  .username {
+font-size: 15px;
+font-weight: bold;
+margin-top: 13px;
+  }
+  
+  .three-dots {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .three-dots span {
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 2px;
+  }
+  
+  .post-image {
+    /* margin: 0px 40px; */
+    width: 100%;
+    height: 200px;
+  }
+  
+  .post-caption { position: relative;
+    line-height: 1.4;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  .show-more {
+  /* Style for the "Show more" link */
+  cursor: pointer;
+  color: blue;
+}
+  .observer-element {
+    height: 1px;
+    opacity: 0;
+  }
+  .image-container {
+    position: relative;
+    overflow: hidden; /* To ensure the heart icon does not overflow from the image */
+  }
+  
+  .heart-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1; /* Make sure the heart icon appears above the image */
+  }
+  
+  .heart-icon:hover {
+    background-color: rgba(0, 0, 0, 1); /* Increase the opacity on hover if desired */
+  }
+  .like-details {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .like-details .profile-photo {
+    margin-top: 5px;
+  }
+  
+  .like-details .profile-photo img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .like-details .other-likes {
+    margin-left: 5px;
+    font-weight: 400;
+  }
+  
+  .like-details span {
+    margin-right: 5px;
+  }
+  
+  .like-details span.emoted {
+    font-weight: bold;
+  }
+  

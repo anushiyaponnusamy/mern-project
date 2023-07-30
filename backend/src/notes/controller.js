@@ -7,7 +7,7 @@ controller.create = async (req) => {
         const viewModel = notesViewModel.createViewModel(req);
         return await dbHelper.create(viewModel);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
@@ -16,7 +16,7 @@ controller.updateById = async (req) => {
         const viewModel = userViewModel.updateViewModel(req);
         return await dbHelper.updateById(req.params.userId,req.params.notesId,viewModel);
     } catch (error) {
-        Promise.reject(error)
+        return   Promise.reject(error)
     }
 }
 
@@ -25,7 +25,7 @@ controller.getNotesByUserId = async (req) => {
         if (!req.params.userId) return "field required";
         return await dbHelper.getNotesByUserId(req.params.userId);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
@@ -34,7 +34,7 @@ controller.getNotesByNotesIdAndUserId = async (req) => {
         if (!req.params.userId && !req.params.notesId) return "field required";
         return await dbHelper.getNotesByNotesIdAndUserId(req.params.userId,req.params.notesId);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 controller.deleteNotesByUserId = async (req) => {
@@ -42,7 +42,7 @@ controller.deleteNotesByUserId = async (req) => {
         if (!req.params.userId) return "field required";
         return await dbHelper.deleteNotesByUserId(req.params.userId);
     } catch (error) {
-        Promise.reject(error)
+        return   Promise.reject(error)
     }
 }
 
@@ -51,7 +51,7 @@ controller.deleteNotesByNotesId = async (req) => {
         if (!req.params.userId) return "field required";
         return await dbHelper.deleteNotesByNotesId(req.params.userId);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 module.exports = controller;

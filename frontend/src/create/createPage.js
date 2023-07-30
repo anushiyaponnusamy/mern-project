@@ -6,22 +6,22 @@ import { useNavigate } from 'react-router-dom';
 
 const Page = () => {
 const navigate=useNavigate();
-const handlePostNavigation=()=>navigate('/createPost')
+const handlePostNavigation=(type)=>{navigate('/createPost',{state:{type}})}
 
   return (
     <div className="page-container">
       <div className="modal">
-        <div className="close-icon-container">
-          <div className="close-icon">&#10005;</div>
+        <div className="close-icon-container" onClick={()=>navigate('/imageGrid')}>
+          <div className="close-icon-create">&#10005;</div>
         </div>
-        <div className="plus-container" onClick={handlePostNavigation}>
+        <div className="plus-container" onClick={()=>handlePostNavigation("image")}>
           <div className="plus-icon-box">
             {/* Plus icon inside a square box */}
             <div className="plus-icon">&#43;</div>
           </div> 
           <p>Create Post</p>
         </div>
-        <div className="plus-container">
+        <div className="plus-container" >
           <div className="plus-icon-box">
             {/* Plus icon inside a square box */}
             <div className="plus-icon">&#43;</div>

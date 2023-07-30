@@ -1,74 +1,84 @@
 const PostSchema=require('./model')
-const likeDbHelper=require('../postlikes/dbHelper')
+const likeDbHelper=require('../postlikes/dbHelper');
+const { reset } = require('nodemon');
 const dbHelper={}
 
-dbHelper.create=(req)=>{
+dbHelper.create=async(req)=>{
     try {
         const obj=new PostSchema(req);
-        return obj.save();
+        return await obj.save();
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
-dbHelper.updateById=(userId,postId,viewModel)=>{
+dbHelper.updateById=async(userId,postId,viewModel)=>{
     try {
-        return PostSchema.updateOne({postId,userId},{$set:{...viewModel}})
+        return await PostSchema.updateOne({_id:postId,userId},{$set:{...viewModel}})
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
+
+dbHelper.delete=async(userId,postId)=>{
+    try {
+        return await PostSchema.updateOne({_id:postId,userId},{active:false})
+    } catch (error) {
+        return Promise.reject(error)
+    }
+}
+
 
 dbHelper.hasLiked=async(postId,userId)=>{
     try {
-        const res= await likeDbHelper.getLikesByUserIdAndPostId(userId,postId);
-        if(res){
-         return true
-        }
-        return false
+        return await likeDbHelper.hasLiked(userId,postId);
+        
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 
-dbHelper.getAllImages=(pageNumber,pagePerSize)=>{
+dbHelper.getAllImages=async (pageNumber,pagePerSize)=>{
     try {
-        return PostSchema.find({active:true}).select({
+        return await PostSchema.find({active:true}).select({
             _id:1,userId:1,aspectRatio:1,image:1
-        }).skip((pageNumber-1)*pagePerSize).limit(pagePerSize);
+        }).sort({createdDate:-1}).skip((pageNumber-1)*pagePerSize).limit(pagePerSize);
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 
-dbHelper.getUserByUserId=(userId)=>{
+dbHelper.getUserByUserId=async (userId)=>{
     try {
       return PostSchema.findOne({_id:userId,active:true});
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 
-dbHelper.getNotesByNotesIdAndUserId=(userId,notesId)=>{
+dbHelper.getByPostId=async(postId)=>{
     try {
-      return PostSchema.findOne({_id:notesId,userId,active:true});
+      return await PostSchema.findOne({_id:postId,active:true});
     } catch (error) {
-        Promise.reject(error)
-    }
-}
-dbHelper.getNotesByUserId=(userId)=>{
-    try {
-      return PostSchema.findOne({_id:userId,active:true});
-    } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
-dbHelper.deleteNotesByUserId=(userId)=>{
+dbHelper.getSelectedImageAndOtherRecommendations=async(postId,pageNumber,pagePerSize)=>{
+    try {
+        return await PostSchema.find({_id:{$nin:postId},active:true})
+        .sort({createdDate:-1})
+        .skip((pageNumber-1)*pagePerSize)
+        .limit(pagePerSize);
+    } catch (error) {
+        return Promise.reject(error)
+    }
+}
+dbHelper.deletePostByPostId=(userId)=>{
     try {
       return PostSchema.updateMany({_id:userId},{active:false});
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 
@@ -76,7 +86,7 @@ dbHelper.deleteNotesByNotesIdAndUserId=(userId)=>{
     try {
       return PostSchema.updateMany({_id:userId},{active:false});
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 

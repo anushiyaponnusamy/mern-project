@@ -40,7 +40,7 @@ const navigate=useNavigate();
         localStorage.setItem('email', response.data.email);
         localStorage.setItem('userId', response.data._id);
         
-        navigate('/create')
+        navigate('/imageGrid')
       }
     } catch (error) {
       console.error('Login error:', error.response.data.error);

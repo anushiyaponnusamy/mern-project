@@ -1,21 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import './createPost.css';
 
 import { FiImage, FiCamera } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 const CreatePost = () => {
   const fileInputRef = useRef(null);
+  const storedToken = localStorage.getItem('token');
   const [image,setImage]=useState("")
   const [selectedFile,setSelectedFile]=useState("")
-  
+  const location=useLocation();
+  // const [type,setType]=useState(location.state?.type)
   const navigate = useNavigate()
   const handleGalleryClick = () => {
     fileInputRef.current.click();
   };
-
 const handleGoBack=()=>navigate('/create')
   const handleFileUpload = async (event) => {
     const val=event.target.files[0];
@@ -37,7 +38,7 @@ const handleGoBack=()=>navigate('/create')
       </div>
 
       {/* Two rows */}
-      <div className="row" onClick={handleGalleryClick}>
+      <div className="row" onClick={()=>{handleGalleryClick()}}>
         <div className="icon-container">
         <FiImage size={24} />
         </div>
@@ -55,7 +56,7 @@ const handleGoBack=()=>navigate('/create')
         type="file"
         ref={fileInputRef}
         style={{ display: 'none' }}
-        onChange={handleFileUpload}
+        onChange={(e)=>handleFileUpload(e)}
       />
     </div>
   );

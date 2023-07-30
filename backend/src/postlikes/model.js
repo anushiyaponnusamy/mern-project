@@ -10,11 +10,11 @@ const mainSchema = new Mongoose.Schema({
   },
   profilePhoto: {
     type: String,
-    required: true,
+    // required: true,
   },
   // soft delete
   postId: {
-    type: Boolean,
+    type: String,
     default: true,
   },
   createdDate: {
@@ -27,7 +27,7 @@ const mainSchema = new Mongoose.Schema({
   },
   active:{
     type:Boolean,
-    required:true
+    default:true
   }
 });
 

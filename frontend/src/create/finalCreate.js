@@ -40,7 +40,7 @@ const ImageEditor = (props) => {
     const handleNextButtonClick = async () => {
 
         try {const data={
-      tag,aspectRatio,description,image:selectedImage,userId:uId,userName
+      tag,aspectRatio,description,image:selectedImage,userId:uId,userName,type:location.state?.type
         }
         console.log("data",data)
             const headers = {

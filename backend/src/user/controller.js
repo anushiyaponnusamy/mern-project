@@ -20,7 +20,7 @@ controller.create = async (req) => {
         const token = jwt.sign({ userId: result._id }, jwtSecretKey, { expiresIn: ONE_MONTH_IN_SECONDS });
         return { ...result, token }
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 // Route to handle user login
@@ -51,7 +51,7 @@ controller.updateById = async () => {
         const viewModel = userViewModel.updateViewModel(req);
         return await dbHelper.updateById(viewModel);
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 
@@ -59,7 +59,7 @@ controller.getAllUsers = async (req) => {
     try {
         return await dbHelper.getAllUsers(req.params.pageNumber,req.params.pagePerSize);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
@@ -68,7 +68,7 @@ controller.getUserByUserId = async (req) => {
         if (!req.params.userId) return "field required";
         return await dbHelper.getUserByUserId(req.params.userId);
     } catch (error) {
-        Promise.reject(error)
+        return  Promise.reject(error)
     }
 }
 
@@ -77,7 +77,7 @@ controller.deleteUserByUserId = async (req) => {
         if (!req.params.userId) return "field required";
         return await dbHelper.deleteUserByUserId(req.params.userId);
     } catch (error) {
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 }
 module.exports = controller;

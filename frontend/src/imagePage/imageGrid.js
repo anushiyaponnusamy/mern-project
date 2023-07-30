@@ -2,10 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import ImageGridItem from './imageGridItem';
 import './imageGrid.css';
 import axios from 'axios';
+import { FaPlusSquare, FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const ImageGrid = () => {
   const storedToken = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
+  const navigate=useNavigate()
   const [imagesData, setImagesData] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,10 +73,16 @@ const ImageGrid = () => {
   }, [currentPage, isFetching]);
 
   return (
-    <div className="image-grid" ref={imagesContainerRef}>
-      {imagesData.map((item) => (
-        <ImageGridItem key={item.postId} image={item.image} aspectRatio={item.aspectRatio} postId={item._id} liked={item.liked}/>
-      ))}
+    <div className="image-grid" ref={imagesContainerRef}> 
+    <div className="top-right-icons">
+    <FaPlusSquare size={24} color="#000" className="iconfeed" onClick={()=>{navigate('/create')}} />
+    <FaSearch size={24} color="#000" className="iconfeed" />
+  </div>
+       {imagesData.map((item) => (
+       
+          <ImageGridItem key={item._id} image={item.image} aspectRatio={item.aspectRatio} postId={item._id} liked={item?.liked} type={item?.type} />
+        ) 
+      )}
       {isFetching && <div>Loading more...</div>}
     </div>
   );

@@ -5,6 +5,7 @@ import './imageEditor.css'
 const ImageEditor = (props) => {
   const storedToken = localStorage.getItem('token');
   const [aspectRatio, setAspectRatio] = useState('16:9');
+  const [disableNext, setDisableNext] = useState(false);
 
   const [image, setImage] = useState('');
   const location=useLocation()
@@ -14,6 +15,7 @@ const ImageEditor = (props) => {
   const [selectedFile,setSelectedFile]=useState(location.state?.selectedFile)
   const handleAspectRatioChange = (event) => {
     setAspectRatio(event.target.value);
+    // setDisableNext(true)
   };
 
   const handleGoBack = () => {
@@ -21,6 +23,8 @@ const ImageEditor = (props) => {
   };
 
   const handleNextButtonClick = async() => {
+    if(disableNext) return;
+    setDisableNext(true)
         const formData = new FormData();
     formData.append('image', selectedFile);
     console.log('selectedimg',selectedFile)
@@ -32,10 +36,12 @@ const ImageEditor = (props) => {
           const response = await axios.post('http://localhost:3001/uploadImage',formData,{headers});
           if (response.data) {
             setImage(response.data)
+          
           }
         } catch (error) {
-      
+      setDisableNext(false)
         }
+        setDisableNext(false)
     
   };
 useEffect(()=>{if(image){
@@ -64,7 +70,7 @@ useEffect(()=>{if(image){
           
       
         <div style={{height:"35px",width:"35px"}} className={aspectRatio === '16:9' ? "image-border": ''}> 
-         {selectedImage && <img src={selectedImage} alt="Selected"  />}</div>
+         {selectedImage && <img src={selectedImage} alt="Selected" className='ratio-image' />}</div>
         <div>  <input
             type="radio"
             value="16:9"
@@ -77,7 +83,8 @@ useEffect(()=>{if(image){
         <div className="aspect-ratio-option"  onClick={()=>handleAspectRatioChange({ target: { value: '4:3' } })}>
           
        
-        <div style={{height:"35px",width:"35px"}} className={aspectRatio === '4:3' ? "image-border": ''}>{selectedImage && <img src={selectedImage} alt="Selected"/>}
+        <div style={{height:"35px",width:"35px"}} className={aspectRatio === '4:3' ? "image-border": ''}>
+          {selectedImage && <img src={selectedImage} alt="Selected" className='ratio-image'/>}
          </div><div> <input
             type="radio"
             value="4:3"
@@ -89,7 +96,8 @@ useEffect(()=>{if(image){
         </div>
         <div className="aspect-ratio-option"  onClick={()=>handleAspectRatioChange({ target: { value: '1:1' } })}>
           
-        <div style={{height:"35px",width:"35px"}} className={aspectRatio === '1:1' ? "image-border": ''}>{selectedImage && <img src={selectedImage} alt="Selected" />}</div>
+        <div style={{height:"35px",width:"35px"}} className={aspectRatio === '1:1' ? "image-border": ''}>
+          {selectedImage && <img src={selectedImage} alt="Selected" className='ratio-image'/>}</div>
          <div>
          <input
             type="radio"

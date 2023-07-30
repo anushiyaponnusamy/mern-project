@@ -28,6 +28,9 @@ const mainSchema = new Mongoose.Schema({
     default: true,
   },
   tag:[],
+  type:{
+    type:String,
+  default:'image'},
   createdDate: {
     type: Date,
     default: Date.now,
