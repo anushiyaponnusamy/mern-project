@@ -32,12 +32,10 @@ const handleGoBack=()=>navigate('/create')
   }, [image]);
   return (
     <div className="page-container1">
-      {/* Left-facing arrow at top-left corner */}
       <div className="arrow-container" onClick={handleGoBack}>
         <div className="left-arrow">&#8592;</div>
       </div>
 
-      {/* Two rows */}
       <div className="row" onClick={()=>{handleGalleryClick()}}>
         <div className="icon-container">
         <FiImage size={24} />

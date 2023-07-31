@@ -84,7 +84,6 @@ const ImageEditor = (props) => {
                         placeholder=""
                     />
                 </div>
-                {/* {error && <div className="error-message">{error}</div>} */}
             </div>
             <div className="card-container" >
                 <div className='tag-first-section'>

@@ -71,7 +71,6 @@
     padding: 4px;
   }
   
-  /* Mobile view styles */
   .suggestion-box.mobile-view {
     max-height: 150px;
     width: 100%;

@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './login.css'; 
 import { useNavigate } from 'react-router-dom';
+import { RiErrorWarningLine } from 'react-icons/ri';
 
 const App = () => {
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState(false);
   const [token, setToken] = useState('');
@@ -32,9 +34,9 @@ const navigate=useNavigate();
       const { token } = response.data;
       setToken(token);
       if(response.data==='Invalid credentials'){
-        navigate('/login')
+        setErrorMessage(response.data)
       }
-      if (response.data) {
+      else {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userName', response.data.userName);
         localStorage.setItem('email', response.data.email);
@@ -72,8 +74,16 @@ const navigate=useNavigate();
       {type && (
         <div className="form-container">
           <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />     {errorMessage && (
+            <div className="error-container">
+              <span className="error-icon">
+                <RiErrorWarningLine />
+              </span>
+              <p className="error-message">{errorMessage}</p>
+            </div>
+          )}
           <button onClick={handleLogin}>Login</button>
+        
         </div>
       )}
     </div>

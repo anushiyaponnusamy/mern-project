@@ -16,20 +16,17 @@ const handlePostNavigation=(type)=>{navigate('/createPost',{state:{type}})}
         </div>
         <div className="plus-container" onClick={()=>handlePostNavigation("image")}>
           <div className="plus-icon-box">
-            {/* Plus icon inside a square box */}
             <div className="plus-icon">&#43;</div>
           </div> 
           <p>Create Post</p>
         </div>
         <div className="plus-container" >
           <div className="plus-icon-box">
-            {/* Plus icon inside a square box */}
             <div className="plus-icon">&#43;</div>
           </div>
           <p>Create Story</p>
         </div>
       </div>
-      {/* ... */}
     </div>
   );
 };

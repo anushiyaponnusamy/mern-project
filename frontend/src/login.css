@@ -1,4 +1,4 @@
-/* src/App.css */
+
 .container {
     max-width: 400px;
     margin: 0 auto;
@@ -9,6 +9,17 @@
     text-align: center;
   }
   
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
+.error-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
   .button-container {
     display: flex;
     justify-content: space-between;
@@ -51,7 +62,6 @@
     cursor: pointer;
   }
   
-  /* Media queries for mobile responsiveness */
   @media screen and (max-width: 600px) {
     .container {
       max-width: 100%;

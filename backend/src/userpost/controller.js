@@ -36,7 +36,7 @@ controller.getSelectedImageAndOtherRecommendations=async(req)=>{
         let liked=false;
         let getByPostId=await dbHelper.getByPostId(req.params.postId);
         arr.push[getByPostId]
-        let all=await dbHelper.getSelectedImageAndOtherRecommendations(req.params.postId,req.params.pageNumber,req.params.pagePerSize);
+        const all=await dbHelper.getSelectedImageAndOtherRecommendations(req.params.postId,req.params.pageNumber,req.params.pagePerSize);
         arr.push(...all)
         if(arr.length>0)
         for (let index = 0; index < arr.length; index += 1) {

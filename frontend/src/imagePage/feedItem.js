@@ -15,6 +15,8 @@ const FeedItem = (props) => {
     const storedToken = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const [feedData, setFeedData] = useState([]);
+    const[tooltipVisible,setTooltipVisible]=useState(false)
+    const handleTaggedPeople=()=>setTooltipVisible(!tooltipVisible)
     const [showFullCaption, setShowFullCaption] = useState(false);
     const toggleCaption = () => {
         setShowFullCaption((prev) => !prev);
@@ -152,8 +154,16 @@ const FeedItem = (props) => {
                     <FaEllipsisH size={20} color="#000" />
                 </div>
                 </div>
-            </div>  <div className="image-container">
-                <img src={post.image} alt={`Post ${post._id}`} className="post-image" />
+            </div>  <div className="image-container" onClick={()=>handleTaggedPeople()}>
+                <img src={post.image} alt={`Post ${post._id}`} className="post-image" /> 
+                 {tooltipVisible &&post.tag.length > 0 &&(
+    <div className="tooltip">
+      {/* Display the tagged people here */}
+      {post?.tag.map((person, index) => (
+        <span key={index}>{person.userName}</span>
+      ))}
+    </div>
+  )}
                 <div className="heart-icon">
                     {post?.liked || nowLiked ? (
                         <IoHeartSharp size={24} color="red" onClick={() => removeLike(post?.userId, post?._id, post?.userName, post?.liked)} />

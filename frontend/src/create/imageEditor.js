@@ -50,9 +50,6 @@ useEffect(()=>{if(image){
   return (
     <div className="image-editor">
       <div className="top-section">
-        {/* <div className="back-arrow" onClick={handleGoBack}>
-          &lt;
-        </div> */}
         <div className="arrow-container1" onClick={handleGoBack} >
         <div className="left-arrow1">&#8592;</div>
       </div>

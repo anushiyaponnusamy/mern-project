@@ -82,13 +82,11 @@ if(userSuggestions&&userSuggestions.length>0)
         
         <div className="close-icon" onClick={()=>closeSuggestion()}><span>&times;</span></div>
           <div className="suggestion-list">
-        {/* You can use an SVG icon or any custom icon for the close icon */}
         
       </div>
             {userSuggestions.map((user) => (
               <div key={user._id} className={userarray._id===user._id?"suggestion-item-selected":"suggestion-item"} 
               onClick={() =>{handleSelectandUnselect(user)}}>
-                {/* <img src={user.userProfilePhoto} alt={user.userName} className="user-avatar" /> */}
                 <div className="user-name">@{user.userName}</div>
               </div>
             ))}

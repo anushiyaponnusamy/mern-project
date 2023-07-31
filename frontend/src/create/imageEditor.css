@@ -1,8 +1,6 @@
 
 .image-editor {
   position: relative;
-  /* display: inline; */
-  /* padding-top: 50px; */
 }
 .ratio-image{
   height: 35px;
@@ -13,20 +11,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  /* position: absolute;
-  top: 0;
-  right: 0;
-  left: 0; */
 }
 
 .back-arrow {
-  /* Add styles for the back arrow */
   font-size: 24px;
   cursor: pointer;
 }
 
 .next-button {
-  /* Add styles for the next button */
   background-color: #2f8aed;
   padding: 8px 16px;
   color: black;
@@ -36,7 +28,6 @@
 }
 
 .selected-image-container {
-  /* Add styles for the container of the selected image */
   display: flex;
   justify-content: center;
 margin: 20px;
@@ -60,26 +51,17 @@ display: flex;
 }
 
 .aspect-ratio-option {
-  /* Add styles for each aspect ratio option */
-  /* display: flex; */
-  /* align-items: center; */
   margin: 5px;
 }
 
 .aspect-ratio-option input[type='radio'] {
-  /* Hide the radio buttons */
   display: none;
 }
 
 .aspect-ratio-option label {
-  /* Add styles for the aspect ratio labels */
   cursor: pointer;
   margin-left: 5px;
 }
-/* App.css */
-/* .app-container {
-  position: relative;
-} */
 
 
 
@@ -87,7 +69,8 @@ display: flex;
   font-size: 25px;
   cursor: pointer;
 }
-/* Media query for mobile devices */
+
+
 @media (max-width: 768px) {
   .top-section {
     padding: 15px;

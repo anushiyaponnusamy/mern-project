@@ -1,4 +1,4 @@
-/* createPage.css */
+
 .page-container {
     display: flex;
     justify-content: center;
@@ -18,11 +18,11 @@
     padding-left: 30px;
     padding-right: 30px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-    position: relative; /* Set the modal to a relative position */
+    position: relative; 
   }
   
   .close-icon-container {
-    position: absolute; /* Position the close icon container absolutely */
+    position: absolute; 
     top: 10px;
     right: 10px;
     width: 30px;

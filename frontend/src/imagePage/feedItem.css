@@ -63,7 +63,6 @@ margin-top: 13px;
     color: #333;
   }
   .show-more {
-  /* Style for the "Show more" link */
   cursor: pointer;
   color: blue;
 }
@@ -73,7 +72,7 @@ margin-top: 13px;
   }
   .image-container {
     position: relative;
-    overflow: hidden; /* To ensure the heart icon does not overflow from the image */
+    overflow: hidden; 
   }
   
   .heart-icon {
@@ -84,11 +83,11 @@ margin-top: 13px;
     padding: 4px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1; /* Make sure the heart icon appears above the image */
+    z-index: 1; 
   }
   
   .heart-icon:hover {
-    background-color: rgba(0, 0, 0, 1); /* Increase the opacity on hover if desired */
+    background-color: rgba(0, 0, 0, 1);
   }
   .like-details {
     display: flex;
@@ -120,4 +119,33 @@ margin-top: 13px;
   .like-details span.emoted {
     font-weight: bold;
   }
+
+.tooltip {
+  position: absolute;
+  /* top: 100%;
+  left: 50%; */
+  /* transform: translateX(-50%); */
+  color: #fff;
+  transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1; 
   
+  
+}
+
+.image-container:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tooltip span {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
